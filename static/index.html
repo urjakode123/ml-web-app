@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Exam Score Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f4f6f8;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Student Exam Score Predictor</h1>
+
+<form id="predictionForm">
+
+    <div class="grid">
+
+        <div>
+            <label>Hours Studied</label>
+            <input type="number" id="Hours_Studied" required>
+        </div>
+
+        <div>
+            <label>Attendance</label>
+            <input type="number" id="Attendance" required>
+        </div>
+
+        <div>
+            <label>Sleep Hours</label>
+            <input type="number" id="Sleep_Hours" required>
+        </div>
+
+        <div>
+            <label>Previous Scores</label>
+            <input type="number" id="Previous_Scores" required>
+        </div>
+
+        <div>
+            <label>Tutoring Sessions</label>
+            <input type="number" id="Tutoring_Sessions" required>
+        </div>
+
+        <div>
+            <label>Physical Activity</label>
+            <input type="number" id="Physical_Activity" required>
+        </div>
+
+        <div>
+            <label>Parental Involvement</label>
+            <select id="Parental_Involvement">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Access to Resources</label>
+            <select id="Access_to_Resources">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Extracurricular Activities</label>
+            <select id="Extracurricular_Activities">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Motivation Level</label>
+            <select id="Motivation_Level">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Internet Access</label>
+            <select id="Internet_Access">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Family Income</label>
+            <select id="Family_Income">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Teacher Quality</label>
+            <select id="Teacher_Quality">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+
+        <div>
+            <label>School Type</label>
+            <select id="School_Type">
+                <option>Public</option>
+                <option>Private</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Peer Influence</label>
+            <select id="Peer_Influence">
+                <option>Negative</option>
+                <option>Neutral</option>
+                <option>Positive</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Learning Disabilities</label>
+            <select id="Learning_Disabilities">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Parental Education</label>
+            <select id="Parental_Education_Level">
+                <option>High School</option>
+                <option>College</option>
+                <option>Postgraduate</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Distance from Home</label>
+            <select id="Distance_from_Home">
+                <option>Near</option>
+                <option>Moderate</option>
+                <option>Far</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Gender</label>
+            <select id="Gender">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button type="submit">Predict Exam Score</button>
+
+</form>
+
+<div id="result">
+    Enter student details and click Predict.
+</div>
+
+
+<script>
+
+document.getElementById("predictionForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const data = {
+        Hours_Studied: Number(document.getElementById("Hours_Studied").value),
+        Attendance: Number(document.getElementById("Attendance").value),
+        Sleep_Hours: Number(document.getElementById("Sleep_Hours").value),
+        Previous_Scores: Number(document.getElementById("Previous_Scores").value),
+        Tutoring_Sessions: Number(document.getElementById("Tutoring_Sessions").value),
+        Physical_Activity: Number(document.getElementById("Physical_Activity").value),
+
+        Parental_Involvement: document.getElementById("Parental_Involvement").value,
+        Access_to_Resources: document.getElementById("Access_to_Resources").value,
+        Extracurricular_Activities: document.getElementById("Extracurricular_Activities").value,
+        Motivation_Level: document.getElementById("Motivation_Level").value,
+        Internet_Access: document.getElementById("Internet_Access").value,
+        Family_Income: document.getElementById("Family_Income").value,
+        Teacher_Quality: document.getElementById("Teacher_Quality").value,
+        School_Type: document.getElementById("School_Type").value,
+        Peer_Influence: document.getElementById("Peer_Influence").value,
+        Learning_Disabilities: document.getElementById("Learning_Disabilities").value,
+        Parental_Education_Level: document.getElementById("Parental_Education_Level").value,
+        Distance_from_Home: document.getElementById("Distance_from_Home").value,
+        Gender: document.getElementById("Gender").value
+    };
+
+    const response = await fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    if(!response.ok) {
+        document.getElementById("result").innerText="Error:" + JSON.stringify(result);
+        return;
+    }
+
+    document.getElementById("result").innerText =
+        "Predicted Exam Score: " +
+        result.predicted_exam_score.toFixed(2);
+
+});
+
+</script>
+
+</body>
+</html>
